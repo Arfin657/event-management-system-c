@@ -1,0 +1,171 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+
+    char name[50], address[100], email[50];
+    char eventName[50];
+    long long mobile;
+
+    int eventChoice;
+    int totalPersons;
+    int vegPersons, nonVegPersons;
+
+    int mahalChoice, mahalType;
+    int djChoice, makeupChoice, welcomeChoice;
+    int decorationChoice;
+    int photoChoice, photoDays;
+
+    float mahalAmount = 0, djAmount = 0, makeupAmount = 0;
+    float welcomeAmount = 0, decoAmount = 0, photoAmount = 0;
+    float vegAmount = 0, nonVegAmount = 0;
+    float total, discount, finalAmount;
+    float advanceAmount, remainingAmount;
+
+    printf("============= EVENT MANAGEMENT SYSTEM ============\n");
+    
+    printf("\nEnter Name: ");
+    scanf(" %[^\n]", name);
+
+    printf("Enter Mobile Number: ");
+    scanf("%lld", &mobile);
+
+    printf("Enter Address: ");
+    scanf(" %[^\n]", address);
+
+    printf("Enter Email ID: ");
+    scanf(" %[^\n]", email);
+
+    printf("\nSelect Function Type:\n");
+    printf("1. Birthday\n");
+    printf("2. Engagement\n");
+    printf("3. Marriage\n");
+    printf("4. Your Choice\n");
+    printf("Enter Choice: ");
+    scanf("%d", &eventChoice);
+
+    if(eventChoice == 1)
+        strcpy(eventName, "Birthday");
+    else if(eventChoice == 2)
+        strcpy(eventName, "Engagement");
+    else if(eventChoice == 3)
+        strcpy(eventName, "Marriage");
+    else {
+        printf("Enter Your Event Name: ");
+        scanf(" %[^\n]", eventName);
+    }
+
+     printf("\nMahal Required? (1-Yes / 0-No): ");
+    scanf("%d", &mahalChoice);
+
+    if(mahalChoice == 1) {
+        printf("Select Mahal Type:\n");
+        printf("1. 250 Persons - Rs.25000\n");
+        printf("2. 500 Persons - Rs.60000\n");
+        printf("3. 1500 Persons - Rs.120000\n");
+        printf("Enter Choice: ");
+        scanf("%d", &mahalType);
+
+        if(mahalType == 1)
+            mahalAmount = 25000;
+        else if(mahalType == 2)
+            mahalAmount = 60000;
+        else if(mahalType == 3)
+            mahalAmount = 120000;
+    }
+    
+    printf("\nEnter Total Number of Persons: ");
+    scanf("%d", &totalPersons);
+
+    
+    printf("\nEnter Number of Veg Plates: ");
+    scanf("%d", &vegPersons);
+
+    printf("Enter Number of Non-Veg Plates: ");
+    scanf("%d", &nonVegPersons);
+
+    vegAmount = vegPersons * 200;
+    nonVegAmount = nonVegPersons * 300;
+
+   
+   
+
+    
+    printf("\nDJ Required? (1-Yes / 0-No): ");
+    scanf("%d", &djChoice);
+    if(djChoice == 1)
+        djAmount = 25000;
+
+    printf("Makeup Required? (1-Yes / 0-No): ");
+    scanf("%d", &makeupChoice);
+    if(makeupChoice == 1)
+        makeupAmount = 20000;
+
+    
+    printf("Welcome Girl Required? (1-Yes / 0-No): ");
+    scanf("%d", &welcomeChoice);
+    if(welcomeChoice == 1)
+        welcomeAmount = 10000;
+
+    
+    printf("\nDecoration Type:\n");
+    printf("0. No Decoration\n");
+    printf("1. Normal - Rs.5000\n");
+    printf("2. Premium - Rs.15000\n");
+    printf("Enter Choice: ");
+    scanf("%d", &decorationChoice);
+
+    if(decorationChoice == 1)
+        decoAmount = 5000;
+    else if(decorationChoice == 2)
+        decoAmount = 15000;
+
+  
+    printf("\nPhotography Required? (1-Yes / 0-No): ");
+    scanf("%d", &photoChoice);
+
+    if(photoChoice == 1) {
+        printf("Enter Number of Days: ");
+        scanf("%d", &photoDays);
+        photoAmount = photoDays * 30000;
+    }
+
+    
+    total = vegAmount + nonVegAmount + mahalAmount + djAmount +
+            makeupAmount + welcomeAmount + decoAmount + photoAmount;
+
+    discount = total * 0.02;
+    finalAmount = total - discount;
+
+    printf("\nEnter Advance Paid: ");
+    scanf("%f", &advanceAmount);
+
+    remainingAmount = finalAmount - advanceAmount;
+
+  
+    printf("\n\n========= EVENT BILL =========\n");
+    printf("Event Type: %s\n", eventName);
+    printf("Name: %s\n", name);
+    printf("Mobile: %lld\n", mobile);
+    printf("Address: %s\n", address);
+    printf("Email: %s\n", email);
+    printf("-----------------------------------\n");
+    printf("Veg Catering Amount: Rs. %.2f\n", vegAmount);
+    printf("Non-Veg Catering Amount: Rs. %.2f\n", nonVegAmount);
+    printf("Mahal Amount: Rs. %.2f\n", mahalAmount);
+    printf("DJ Amount: Rs. %.2f\n", djAmount);
+    printf("Makeup Amount: Rs. %.2f\n", makeupAmount);
+    printf("Welcome Girl Amount: Rs. %.2f\n", welcomeAmount);
+    printf("Decoration Amount: Rs. %.2f\n", decoAmount);
+    printf("Photography Amount: Rs. %.2f\n", photoAmount);
+    printf("-----------------------------------\n");
+    printf("Total Amount: Rs. %.2f\n", total);
+    printf("Discount (2%%): Rs. %.2f\n", discount);
+    printf("Final Amount: Rs. %.2f\n", finalAmount);
+    printf("Advance Paid: Rs. %.2f\n", advanceAmount);
+    printf("Remaining Amount: Rs. %.2f\n", remainingAmount);
+    printf("-----------------------------------\n");
+    printf("Booking Confirmed Successfully!\n");
+
+    return 0;
+}
